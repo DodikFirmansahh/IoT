@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "author": "Dodik Firmansah",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -120.66, "left": -70.67, "attrs": {} },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 1.33, "left": 145.5, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -245.37,
+      "left": 203.4,
+      "attrs": { "pins": "i2c" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -15.67, "left": 399.6, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 159.3, "left": 350.96, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 160.12, "left": 393.12, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.2", "rtc1:GND", "black", [ "h-22.6", "v86.56", "h210.53", "v-99.78" ] ],
+    [ "rtc1:5V", "esp:VIN", "red", [ "h-23.75", "v96.55", "h-208.54", "v-85.81", "h-3.99" ] ],
+    [ "rtc1:SDA", "esp:D21", "yellow", [ "h-60.74", "v-93.87" ] ],
+    [ "lcd1:VCC", "esp:VIN", "red", [ "h-340.57", "v239.79" ] ],
+    [ "lcd1:GND", "esp:GND.2", "black", [ "h-318.14", "v239.68" ] ],
+    [ "lcd1:SDA", "rtc1:SDA", "yellow", [ "h-114.21", "v199.33" ] ],
+    [ "rtc1:SCL", "lcd1:SCL", "blue", [ "h-51.13", "v-224.02" ] ],
+    [ "esp:D22", "rtc1:SCL", "blue", [ "h73.24", "v-2.34" ] ],
+    [ "servo1:GND", "gnd1:GND", "black", [ "h0" ] ],
+    [ "servo1:GND", "esp:GND.2", "black", [ "h-65.52", "v119.04", "h-422.82", "v-122.79" ] ],
+    [ "servo1:V+", "vcc1:VCC", "red", [ "h-18.54", "v166.13", "h19.22" ] ],
+    [ "servo1:PWM", "esp:D5", "green", [ "h-118.9", "v-103.89" ] ]
+  ],
+  "dependencies": {}
+}
