@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "author": "Dodik Firmansah",
+  "editor": "wokwi",
+   "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -74.67, "left": 12, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -73.83,
+      "left": 208.2,
+      "attrs": { "temperature": "34.7", "humidity": "88.5" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": -82.03,
+      "left": 148.02,
+      "attrs": { "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "dht1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "dht1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "dht1:SDA", "esp:D15", "yellow", [ "v0" ] ],
+    [ "led1:C", "esp:GND.1", "black", [ "v0" ] ],
+    [ "led1:A", "esp:D5", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
