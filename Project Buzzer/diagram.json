@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "author": "Dodik Firmansah",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": -41.35, "left": -85.72, "attrs": {} },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -15.45,
+      "left": 70.74,
+      "attrs": { "distance": "205" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 73.04,
+      "left": 207.66,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "ultrasonic1:VCC", "esp:VIN", "red", [ "v144.02", "h-303.28", "v-108.74" ] ],
+    [ "ultrasonic1:GND", "esp:GND.2", "black", [ "v157.27", "h-343.33", "v-133.87" ] ],
+    [ "ultrasonic1:TRIG", "esp:D13", "green", [ "v132.6", "h-300.03", "v-124.27" ] ],
+    [ "ultrasonic1:ECHO", "esp:D14", "green", [ "v150.42", "h-301.81", "v-153.97" ] ],
+    [ "bz1:1", "esp:GND.2", "black", [ "v92.15", "h-414.78", "v-145" ] ],
+    [ "bz1:2", "esp:D5", "blue", [ "v27.85", "h-196.29", "v-127.84" ] ]
+  ],
+  "dependencies": {}
+}
